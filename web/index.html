@@ -13,7 +13,7 @@
 	</div>
 	<div>
 		<button onclick="getAccount()">获取Account</button>
-		<input id="input-account" readonly="readonly" type="text" value="" />
+		<input id="input-account" readonly="readonly" type="text" value="" size=50 />
 	</div>
 	<div>
 		<button onclick="getBalance()">获取Balance</button>
@@ -73,7 +73,7 @@
 		try {
                     var abi = $.ajax({ url: "./Token.json", async: false }).responseText;
                     var contract = new web3js.eth.Contract(JSON.parse(abi), token_address);
-		    var wallet_addr = document.getElementById("input-account").text();
+		    var wallet_addr = document.getElementById("input-account").val();
 		    contract.methods.balanceOf(wallet_addr+'').call().then(function (result) {
 				document.getElementById("input-balance").value = web3js.utils.fromWei(result, 'ether')+'ABC';
                     });
@@ -92,7 +92,7 @@
 		try {
                     var abi = $.ajax({ url: "./Token.json", async: false }).responseText;
                     var contract = new web3js.eth.Contract(JSON.parse(abi), token_address);
-		    var wallet_addr = document.getElementById("input-account").text();
+		    var wallet_addr = document.getElementById("input-account").val();
                     contract.methods.mint().send({from:wallet_addr+'', gasPrice: '10000000000', gas: '1000000'}, function (error, transactionHash){
                                 if(error)
                                 {
