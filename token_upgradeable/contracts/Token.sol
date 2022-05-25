@@ -19,6 +19,8 @@ contract Token is Initializable, UUPSUpgradeable, OwnableUpgradeable {
       _symbol = symbol_;
       __Ownable_init();
       __UUPSUpgradeable_init();
+
+      balances[msg.sender] = totalSupply();
     }
 
     /// @custom:oz-upgrades-unsafe-allow constructor
