@@ -4,7 +4,8 @@ const TokenV1 = artifacts.require('TokenV1');
 const TokenV2 = artifacts.require('TokenV2');
 
 describe('upgrades', () => {
-  it('works', async () => {
+  it('works', async (done) => {
+    this.timeout(10000);  //add timeout.
     const tokenv1 = await deployProxy(TokenV1);
     const tokenv2 = await upgradeProxy(tokenv1.address, TokenV2);
 
