@@ -74,6 +74,7 @@
                     var abi = $.ajax({ url: "./Token.json", async: false }).responseText;
                     var contract = new web3js.eth.Contract(JSON.parse(abi), token_address);
 		    var wallet_addr = document.getElementById("input-account").val();
+		    console.log(wallet_addr);
 		    contract.methods.balanceOf(wallet_addr+'').call().then(function (result) {
 				document.getElementById("input-balance").value = web3js.utils.fromWei(result, 'ether')+'ABC';
                     });
