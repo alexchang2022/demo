@@ -5,13 +5,14 @@ A practical example on how to upgrade an ERC20 token
 
 ## Overview
 -----------
-The contracts are written in Solidity, and supports upgradable contract. 
+The contracts are written in Solidity, and supports upgradeable contract. 
 
-The goal of this code snippet is to act as a demostration of upgradable ERC20 token. This code contains:
+The goal of this code snippet is to act as a demostration of upgradeable ERC20 token. This code contains:
 
 - Proxy contract 
 - two implementation contracts 
 - migration files to demostrate the upgrade process 
+- test scripts to demostrate the upgrade process 
 
 ## Requirements:
 --------------
