@@ -1,0 +1,22 @@
+{
+  "name": "token_upgradeable",
+  "version": "1.0.0",
+  "description": "A practical example on how to upgrade an ERC20 token",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts-upgradeable": "^4.6.0",
+    "@truffle/hdwallet-provider": "^2.0.8"
+  },
+  "devDependencies": {
+    "@openzeppelin/truffle-upgrades": "^1.15.0"
+  }
+}
