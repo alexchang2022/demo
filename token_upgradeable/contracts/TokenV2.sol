@@ -12,7 +12,7 @@ contract TokenV2 is Initializable, ERC20Upgradeable, UUPSUpgradeable, OwnableUpg
       __Ownable_init();
       __UUPSUpgradeable_init();
 
-      _mint(msg.sender, 1000000 * 10 ** decimals());
+      //_mint(msg.sender, 1000000 * 10 ** decimals());
     }
 
     /// @custom:oz-upgrades-unsafe-allow constructor
