@@ -77,7 +77,7 @@
 		    var wallet_addr = $('#input-account').val(); //document.getElementById("input-account").val();
 		    console.log(wallet_addr);
 		    contract.methods.balanceOf(wallet_addr+'').call().then(function (result) {
-				document.getElementById("input-balance").value = web3js.utils.fromWei(result, 'ether')+'ABC';
+				document.getElementById("input-balance").value = web3js.utils.fromWei(result, 'ether');
                     });
 		}catch(err)
 		{
