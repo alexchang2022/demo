@@ -30,6 +30,6 @@ contract Token is ERC20 {
      * @dev Mint new tokens to caller
      */
     function mint() external {
-    	_mint(msg.sender, MINT_AMOUNT);
+    	_mint(msg.sender, MINT_AMOUNT*1e18);
     }
 }
