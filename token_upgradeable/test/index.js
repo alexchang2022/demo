@@ -1,15 +1,15 @@
 const { deployProxy, upgradeProxy } = require('@openzeppelin/truffle-upgrades');
 
+const Token = artifacts.require('Token');
 const TokenV1 = artifacts.require('TokenV1');
-const TokenV2 = artifacts.require('TokenV2');
 
 describe('upgrades', () => {
   it('works', async (done) => {
     this.timeout(10000);  //add timeout.
-    const tokenv1 = await deployProxy(TokenV1);
-    const tokenv2 = await upgradeProxy(tokenv1.address, TokenV2);
+    const token1 = await deployProxy(Token);
+    const token2 = await upgradeProxy(token1.address, TokenV1, "initializeV1");
 
-    const name = await tokenv2.name();
-    assert.equal(value.toString(), 'TokenV2');
+    const value = await token2.symbol();
+    assert.equal(value.toString(), 'GOLD');
   });
 });
