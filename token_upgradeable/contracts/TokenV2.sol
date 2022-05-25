@@ -8,7 +8,7 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 contract TokenV2 is Initializable, ERC20Upgradeable, UUPSUpgradeable, OwnableUpgradeable {
     function initialize() initializer public {
-      __ERC20_init("TokenV2", "BCD");
+      __ERC20_init("TokenV2", "EFG");
       __Ownable_init();
       __UUPSUpgradeable_init();
 
