@@ -8,7 +8,7 @@ import "./Token.sol";
 
 contract TokenV1 is Token {
 
-    function initializeV1(string memory symbol_) reinitializer(2) public {
-      _symbol = symbol_;
+    function initializeV1() reinitializer(2) public {
+      _symbol = "GOLD";
     }
 }
