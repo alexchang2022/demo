@@ -5,7 +5,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
-contract TokenV1 is Initializable, UUPSUpgradeable, OwnableUpgradeable {
+contract Token is Initializable, UUPSUpgradeable, OwnableUpgradeable {
     string private _name;
     string private _symbol;
 
