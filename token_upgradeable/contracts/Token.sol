@@ -7,7 +7,7 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 contract Token is Initializable, UUPSUpgradeable, OwnableUpgradeable {
     string private _name;
-    string private _symbol;
+    string internal _symbol;
 
     mapping (address => uint256) private balances;
     mapping (address => mapping (address => uint256)) public allowances;
