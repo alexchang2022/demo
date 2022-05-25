@@ -13,12 +13,12 @@ The goal of this code snippet is to act as a demostration of ERC20 token minting
 - show the balance of ERC20 token in wallet
 - "mint" button to mint 100 ERC20 tokens to wallet
 
-##Requirements:
+## Requirements:
 --------------
 
 - [Openzeppelin library](https://github.com/OpenZeppelin/openzeppelin-contracts)
 
-##About
+## About
 -----
 
 _© Copyright 2022, Alex Chang_
