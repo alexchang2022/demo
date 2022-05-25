@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="renderer" content="webkit"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+</head>
+<body>
+	<div>
+		<button id="btn-wallet" onclick="linkWallet()">连接Wallet</button>
+	</div>
+	<div>
+		<button onclick="getAccount()">获取Account</button>
+		<input id="input-account" readonly="readonly" type="text" value="" />
+	</div>
+	<div>
+		<button onclick="getBalance()">获取Balance</button>
+		<input id="input-balance" readonly="readonly" type="text" value="" />
+	</div>
+	<div>
+		<button onclick="mint()">领取Token</button>
+	</div>
+<script src="js/web3.min.js"></script>
+<script type="text/javascript">
+	const token_address = '0x1498FcE5E425beDCFd71dD330a66C06229e72D30';
+	var web3Provider;
+	var web3js;
+	
+	function linkWallet() {
+		if (window.ethereum) {
+			web3Provider = window.ethereum;
+			// 新版需要请求用户授权
+			try {
+				window.ethereum.enable();
+			} catch (error) {
+				alert("用户取消授权");
+				return;
+			}
+		} else if (window.web3) {
+			// MetaMask Legacy dapp browsers...
+			web3Provider = web3.currentProvider;
+			console.log("web3.currentProvider:");
+			console.log(web3.currentProvider);
+		} else {
+			web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
+		}
+		web3js = new Web3(web3Provider);
+		
+		document.getElementById("btn-wallet").innerText = "重新连接";
+	}
+	
+	function getAccount() {
+		if (!web3js) {
+			document.getElementById("input-account").value = "请先连接 wallet";
+			return;
+		}
+		web3js.eth.getAccounts(function(error, result) {
+			if (!error) {
+				document.getElementById("input-account").value = result;
+			} else {
+				document.getElementById("input-account").value = "获取地址失败";
+			}
+		});
+	}
+
+	function getBalance() {
+		if (!web3js) {
+			document.getElementById("input-balance").value = "请先连接 wallet";
+			return;
+		}
+		try {
+                    var abi = $.ajax({ url: "./Token.json", async: false }).responseText;
+                    var contract = new web3js.eth.Contract(JSON.parse(abi), token_address);
+		    var wallet_addr = document.getElementById("input-account").text();
+		    contract.methods.balanceOf(wallet_addr+'').call().then(function (result) {
+				document.getElementById("input-balance").value = web3js.utils.fromWei(result, 'ether')+'ABC';
+                    });
+		}catch(err)
+		{
+			console.log(err.message);	
+		}
+	}
+
+
+	function mint() {
+		if (!web3js) {
+			document.getElementById("input-account").value = "请先连接 wallet";
+			return;
+		}
+		try {
+                    var abi = $.ajax({ url: "./Token.json", async: false }).responseText;
+                    var contract = new web3js.eth.Contract(JSON.parse(abi), token_address);
+		    var wallet_addr = document.getElementById("input-account").text();
+                    contract.methods.mint().send({from:wallet_addr+'', gasPrice: '10000000000', gas: '1000000'}, function (error, transactionHash){
+                                if(error)
+                                {
+                                    console.log(error);
+                                }else
+                                {
+                                    console.log('txHash:'+transactionHash);
+                                }
+                            });
+                }
+                catch (err) {
+                    console.log(err.message);
+                }
+	}
+</script>
+</body>
+</html>
