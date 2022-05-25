@@ -7,7 +7,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 contract TokenV2 is Initializable, ERC20Upgradeable, UUPSUpgradeable, OwnableUpgradeable {
-    function initialize(string memory name, string memory symbol) initializer public {
+    function initialize(string memory name, string memory symbol) reinitializer(2) public {
       __ERC20_init(name, symbol);
       __Ownable_init();
       __UUPSUpgradeable_init();
