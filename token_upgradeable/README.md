@@ -11,7 +11,7 @@ The goal of this code snippet is to act as a demostration of upgradeable ERC20 t
 
 - Proxy contract 
 - two implementation contracts 
-- migration files to demostrate the upgrade process 
+- migration files to demostrate the upgrade process(update the symbol of token) 
 - test scripts to demostrate the upgrade process 
 
 ## Requirements:
