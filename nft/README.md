@@ -24,9 +24,10 @@ The goal of this code snippet is to act as a demostration of redeem NFT token. T
 - truffle run verify Items@nftaddress --network matic (environment variable POLYGONSCAN_API_KEY needed)
 - Use [polyscan](https://mumbai.polygonscan.com/) and visit read contract tab, find voucher_hash() function, use case: your wallet address + [1, "1000000000000", "0x"] to get digest of this NFTVoucher.
 - Edit file web/index.html, update the message to response value in last step, then you will get a signature popup in browser.
-- Then click write tab and connect your wallet with polyscan, call the _redeem_ function, with params: your wallet address and NFTVoucher tuple [1, "1000000000000", signature in last step].
+- Visit http://hostname/web/index.html, use MetaMask to connect the page, open developer mode in Chrome browser.
+- Then click write tab and connect your wallet with polyscan, call the _redeem_ function, with params: your wallet address and NFTVoucher tuple [1, "1000000000000", __signature in last step__].
 	- use MATIC, put 0.1 in value input field, which means providing 0.1 MATIC to redeem NFT
-        - use Token to redeem, do not forget to call approve in Token's contract, and then put 0 in value input field. The redeem function will transfer Token from caller to the owner of NFT contract.
+	- use Token to redeem, do not forget to call approve in Token's contract, and then put 0 in value input field. The redeem function will transfer Token from caller to the owner of NFT contract.
 
 ## About
 -----
