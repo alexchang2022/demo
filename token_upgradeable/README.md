@@ -1,4 +1,4 @@
-# ERC20 Token Upgradable 
+# ERC20 Token Upgradeable 
 
 A practical example on how to upgrade an ERC20 token
 
