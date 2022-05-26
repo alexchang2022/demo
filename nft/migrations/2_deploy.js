@@ -1,8 +1,11 @@
 const Items = artifacts.require('Items');
-const tokenAddress = '0x241aFf8Cad56D43604D9EBD52A66795b350BDd1E';
+const Token = artifacts.require('Token');
 
 module.exports = async function (deployer) {
-  await deployer.deploy(Items, tokenAddress).then(function(instance){
-	console.log("NFT contract deployed", instance.address);
+  await deployer.deploy(Token, "Gold Token", "GOLD", "1000000000000000000000000000").then(function(token){
+	console.log("ERC20 Token deployed", token.address);
+  	return deployer.deploy(Items, token.address).then(function(instance){
+		console.log("NFT contract deployed", instance.address);
+  	});
   });
 };
