@@ -18,6 +18,11 @@ The goal of this code snippet is to act as a demostration of ERC20 token minting
 
 - [Openzeppelin library](https://github.com/OpenZeppelin/openzeppelin-contracts)
 
+## Test
+-------
+- The test file is located in token/web folder, file name is index.html, please use it in http://hostname/web/, do not use file:///
+- The token address is [0x4A63BeF21Defc42E34b6e5Bbc69A0DB440Ac1fd5](https://mumbai.polygonscan.com/address/0x4A63BeF21Defc42E34b6e5Bbc69A0DB440Ac1fd5) 
+
 ## About
 -----
 
