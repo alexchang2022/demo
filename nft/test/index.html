@@ -34,7 +34,7 @@
 	var address; 
 	await web3js.eth.getAccounts(function(error, result) {
                 if (!error) {
-				  address = result;
+				  address = result[0];
                 } else {
 				  console.log("get address failed!");
 				  return;
