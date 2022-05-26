@@ -94,6 +94,7 @@ contract Items is ERC1155, ReentrancyGuard, Ownable {
 	require(redeemer != address(0), "invalid redeemer");
 	require(voucher.tokenId != 0 && voucher.minPrice != 0, "invalid voucher");
 	// FIXME: verify signature, need a better method
+	/*
 	bytes32 r;
     	bytes32 s;
     	uint8 v;
@@ -112,7 +113,7 @@ contract Items is ERC1155, ReentrancyGuard, Ownable {
     	}
     	require(v == 27 || v == 28, "invalid v");
 	require(verify(redeemer, voucher, v, r, s), "invalid voucher signature");
-
+	*/
 	// redeem by ETH/MATIC/BNB
 	if(msg.value >= voucher.minPrice)
 	{
