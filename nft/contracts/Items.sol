@@ -89,17 +89,6 @@ contract Items is ERC1155, ReentrancyGuard, Ownable {
         return ecrecover(digest, v, r, s) == redeemer;
     }
 
-    /**
-    * @dev compare bytes to bytes32
-    */
-    function str_cmp(bytes memory str1, bytes32 str2) internal pure returns (bool) {
-	bytes32 result;
-    	assembly {
-        	result := mload(add(str1, 32))
-    	}
-	return (result == str2);
-  }
-
     // Redeem NFT by Token 
     function redeem(address redeemer, NFTVoucher calldata voucher) public payable nonReentrant returns (bool) {
 	require(redeemer != address(0), "invalid redeemer");
