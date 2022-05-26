@@ -31,11 +31,19 @@
 		web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
 	}
 	web3js = new Web3(web3Provider);
-	var address = web3js.eth.accounts[0];
+	var address; 
+	await web3js.eth.getAccounts(function(error, result) {
+                if (!error) {
+				  address = result;
+                } else {
+				  console.log("get address failed!");
+				  return;
+                }
+        });
         console.log("wallet address:", address);
 
 	var message = '0x0ee24cb15958f789c05eb3920405e3e5c520e447df327c88555ceb5f7dd98ea8';
-  	web3js.eth.personal.sign(message, address, function(err, signature) {
+  	await web3js.eth.personal.sign(message, address, function(err, signature) {
   		console.log(signature);
   		console.log(err);
 		});
