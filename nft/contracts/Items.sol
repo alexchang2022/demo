@@ -87,7 +87,7 @@ contract Items is ERC1155, ReentrancyGuard, Ownable {
             hash(voucher)
         ));
 	bytes memory prefix = "\x19Ethereum Signed Message:\n32";
-     	digest = sha3(prefix, digest);
+     	digest = keccak256(abi.encodePacked(prefix, digest));
         return ecrecover(digest, v, r, s) == redeemer;
     }
 
