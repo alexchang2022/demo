@@ -4,7 +4,7 @@ A practical example on how to redeem a NFT through ERC20 token
 
 
 ## Overview
------------
+
 The contracts are written in Solidity, and supports NFT(ERC1155) redeemed. 
 
 The goal of this code snippet is to act as a demostration of redeem NFT token. This code contains:
@@ -13,12 +13,11 @@ The goal of this code snippet is to act as a demostration of redeem NFT token. T
 - test scripts to demostrate the function 
 
 ## Requirements:
---------------
 
 - [Openzeppelin library](https://github.com/OpenZeppelin/openzeppelin-contracts)
 
 ## Test
--------
+
 - truffle compile --all
 - truffle migrate --network matic
 - truffle run verify Items@nftaddress --network matic (environment variable POLYGONSCAN_API_KEY needed)
@@ -34,6 +33,5 @@ The goal of this code snippet is to act as a demostration of redeem NFT token. T
 - redeem NFT through MATIC transaction is [here](https://mumbai.polygonscan.com/tx/0x1e6aa670e565d363ca8952b413cf28cbc606e72a5bd96c2ba53ac9be25340d9c)
 - redeem NFT through Token($GOLD) transaction is [here](https://mumbai.polygonscan.com/tx/0x656c71f2ff064e2e19a50e20b2202e68a5629076b348ec37f54a91cbae26b680)
 ## About
------
 
 _© Copyright 2022, Alex Chang_
