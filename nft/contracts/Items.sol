@@ -89,19 +89,6 @@ contract Items is ERC1155, ReentrancyGuard, Ownable {
         return ecrecover(digest, v, r, s) == redeemer;
     }
 
-    /**
-     * @dev verify voucher
-     */
-    function verify2(address redeemer, NFTVoucher memory voucher, uint8 v, bytes32 r, bytes32 s) internal view returns (bool) {
-        // Note: we need to use `encodePacked` here instead of `encode`.
-        bytes32 digest = keccak256(abi.encodePacked(
-            "\x19Ethereum Signed Message:\n32",
-            DOMAIN_SEPARATOR,
-            hash(voucher)
-        ));
-        return ecrecover(digest, v, r, s) == redeemer;
-    }
-
     // TEST ONLY
     function testVerify(address redeemer, NFTVoucher calldata voucher) public view returns (bool) {
 	require(redeemer != address(0), "invalid redeemer");
@@ -123,8 +110,7 @@ contract Items is ERC1155, ReentrancyGuard, Ownable {
       		v += 27;
     	}
     	require(v == 27 || v == 28, "invalid v");
-	//return verify(redeemer, voucher, v, r, s);
-	return verify2(redeemer, voucher, v, r, s);
+	return verify(redeemer, voucher, v, r, s);
     }
 
     // Redeem NFT by Token 
