@@ -43,7 +43,7 @@
         console.log("wallet address:", address);
 
 	var message = '0x0ee24cb15958f789c05eb3920405e3e5c520e447df327c88555ceb5f7dd98ea8';
-  	await web3js.eth.personal.sign(message, address, function(err, signature) {
+  	await web3js.eth.personal.sign(message.toString('hex'), address, function(err, signature) {
   		console.log(signature);
   		console.log(err);
 		});
