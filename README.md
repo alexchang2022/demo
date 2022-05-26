@@ -1,4 +1,4 @@
-# Please visit sub projects for more infomation 
+# Please visit sub projects for more information 
 
 
 
