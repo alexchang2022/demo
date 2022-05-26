@@ -12,20 +12,31 @@
   <script>
 	window.addEventListener('load', function() {
 
-   	// Checking if Web3 has been injected by the browser (Mist/MetaMask)
-  	if (typeof web3 !== 'undefined') {
-    	// Use Mist/MetaMask's provider
-    	web3 = new Web3(web3.currentProvider);
-  	} else {
-    		console.log('No web3? You should consider trying MetaMask!')
-    		// fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-    		web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
-  	}
-	var address = web3.eth.accounts[0];
+	var web3Provider;
+	var web3js;
+	if (window.ethereum) {
+		web3Provider = window.ethereum;
+		// 新版需要请求用户授权
+		try {
+			window.ethereum.enable();
+		} catch (error) {
+			alert("用户取消授权");
+			return;
+		}
+	} else if (window.web3) {
+		// MetaMask Legacy dapp browsers...
+		web3Provider = web3.currentProvider;
+		console.log("web3.currentProvider:");
+		console.log(web3.currentProvider);
+	} else {
+		web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
+	}
+	web3js = new Web3(web3Provider);
+	var address = web3js.eth.accounts[0];
         console.log("wallet address:", address);
 
 	var message = '0x0ee24cb15958f789c05eb3920405e3e5c520e447df327c88555ceb5f7dd98ea8';
-  	web3.personal.sign(message, address, function(err, signature) {
+  	web3js.personal.sign(message, address, function(err, signature) {
   		console.log(signature);
   		console.log(err);
 		});
