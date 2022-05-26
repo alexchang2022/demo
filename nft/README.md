@@ -29,6 +29,10 @@ The goal of this code snippet is to act as a demostration of redeem NFT token. T
 	- use MATIC, put 0.1 in value input field, which means providing 0.1 MATIC to redeem NFT
 	- use Token to redeem, do not forget to call approve in Token's contract, and then put 0 in value input field. The redeem function will transfer Token from caller to the owner of NFT contract.
 
+
+- NFT contract address is [here](https://mumbai.polygonscan.com/address/0x3eB4800b07b72f054Baa0d62f9DC577c983CAB05)
+- redeem NFT through MATIC transaction is [here](https://mumbai.polygonscan.com/tx/0x1e6aa670e565d363ca8952b413cf28cbc606e72a5bd96c2ba53ac9be25340d9c)
+- redeem NFT through Token($GOLD) transaction is [here](https://mumbai.polygonscan.com/tx/0x656c71f2ff064e2e19a50e20b2202e68a5629076b348ec37f54a91cbae26b680)
 ## About
 -----
 
