@@ -67,7 +67,7 @@ contract Items is ERC1155, ReentrancyGuard, Ownable {
     /**
      * @dev get the digest of Voucher 
      */
-    function voucher_hash(NFTVoucher memory voucher) internal view returns (bytes32) {
+    function voucher_hash(NFTVoucher memory voucher) public view returns (bytes32) {
         bytes32 digest = keccak256(abi.encodePacked(
             "\x19\x01",
             DOMAIN_SEPARATOR,
@@ -75,6 +75,20 @@ contract Items is ERC1155, ReentrancyGuard, Ownable {
         ));
 	return digest;
     }
+
+    /**
+     * @dev verify voucher
+     */
+    function verify(address redeemer, NFTVoucher memory voucher, uint8 v, bytes32 r, bytes32 s) internal view returns (bool) {
+        // Note: we need to use `encodePacked` here instead of `encode`.
+        bytes32 digest = keccak256(abi.encodePacked(
+            "\x19\x01",
+            DOMAIN_SEPARATOR,
+            hash(voucher)
+        ));
+        return ecrecover(digest, v, r, s) == redeemer;
+    }
+
     /**
     * @dev compare bytes to bytes32
     */
