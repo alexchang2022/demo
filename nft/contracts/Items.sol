@@ -11,7 +11,7 @@ import "@openzeppelin/contracts/security/ReentrancyGuard.sol";  // OZ: Reentranc
 contract Items is ERC1155, ReentrancyGuard, Ownable {
     using SafeMath for uint256;
 
-    // max NFT can be redeemed
+    // max NFT been redeemed
     uint256 public nftMinted;
     IERC20 public immutable erc20Token;
     bytes32 public DOMAIN_SEPARATOR;
